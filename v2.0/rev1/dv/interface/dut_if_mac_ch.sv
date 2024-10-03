@@ -6,7 +6,8 @@ interface dut_if_mac_ch #(parameter DWIDTH = 40)
                 ( input bit fwd_clk,   //During PMA mode, this is i_rx_pma_clk,
                   input bit wr_clk,    // during fifo mode, this is wr_clk
                   input bit rd_clk,
-                  input bit osc_clk);   // Only used for leader 
+                  input bit osc_clk,
+                  output logic i_osc_clk);   // Only used for leader 
 
   
     logic [DWIDTH*2-1:0]   data_in; 

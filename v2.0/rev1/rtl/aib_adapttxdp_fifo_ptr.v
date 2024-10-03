@@ -80,7 +80,7 @@ module aib_adapttxdp_fifo_ptr
    end
    // Binary Next Write Address 
    // Add option to allow write when full
-   assign wr_addr_bin_nxt = (AWIDTH+1)'(wr_addr_bin + wr_en); 
+   assign wr_addr_bin_nxt = {1'b0,wr_addr_bin} + wr_en; 
    
    // Grey Next Write Address 
    assign wr_addr_gry_nxt = ((wr_addr_bin_nxt>>1'b1) ^ wr_addr_bin_nxt);
@@ -120,7 +120,7 @@ module aib_adapttxdp_fifo_ptr
    end
    // Binary Next Read Address 
    // Add option to allow read when empty
-   assign rd_addr_bin_nxt = (AWIDTH+1)'(rd_addr_bin +  rd_en);
+   assign rd_addr_bin_nxt = {1'b0,rd_addr_bin} +  rd_en;
    
    // Grey Next Read Address 
    assign rd_addr_gry_nxt = ((rd_addr_bin_nxt>>1'b1) ^ rd_addr_bin_nxt);

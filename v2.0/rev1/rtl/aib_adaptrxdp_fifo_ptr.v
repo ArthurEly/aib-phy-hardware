@@ -79,7 +79,7 @@ module aib_adaptrxdp_fifo_ptr
    end
    end
    // Binary Next Write Address 
-   assign wr_addr_bin_nxt = (AWIDTH+1)'(wr_addr_bin +  wr_en);
+   assign wr_addr_bin_nxt = {1'b0,wr_addr_bin} +  wr_en;
    
    // Grey Next Write Address 
    assign wr_addr_gry_nxt = ((wr_addr_bin_nxt>>1'b1) ^ wr_addr_bin_nxt);
@@ -120,7 +120,7 @@ module aib_adaptrxdp_fifo_ptr
    end
    // Binary Next Read Address 
 
-   assign rd_addr_bin_nxt = (AWIDTH+1)'(rd_addr_bin +  rd_en);
+   assign rd_addr_bin_nxt = {1'b0,rd_addr_bin} +  rd_en;
    						
    
    // Grey Next Read Address 
